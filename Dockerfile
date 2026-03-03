@@ -1,12 +1,11 @@
 # Step 1: Build WAR using Ant
-FROM openjdk:8-jdk AS build
+FROM eclipse-temurin:8-jdk AS build
 
 WORKDIR /app
 COPY . .
 
 RUN apt-get update && apt-get install -y ant
-RUN ant clean
-RUN ant dist
+RUN ant
 
 # Step 2: Deploy WAR in Tomcat
 FROM tomcat:9.0
